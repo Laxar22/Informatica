@@ -1,0 +1,25 @@
+body {
+    background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/9112b576009313.5c5ca8e8c45c3.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.champion-details {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.champion-details h1 {
+    text-align: center;
+}
+
+.champion-info {
+    margin-top: 20px;
+}

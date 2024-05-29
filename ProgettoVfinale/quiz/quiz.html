@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends Quiz</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+body {
+    background: url('wallpaper.jpg');
+    background-size: cover;
+    color: #f1f1f1;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.quiz-container {
+    background-color: rgba(34, 34, 34, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+
+.quiz-header {
+    margin-bottom: 40px;
+}
+
+.quiz-header h2 {
+    margin: 0 0 40px;
+    font-size: 36px;
+}
+.leaderboard-container {
+    max-width: 500px;
+    margin: auto;
+    float: right;
+}
+
+.list-group-item {
+    color: black;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.option {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    padding: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    transition: background-color 0.3s;
+}
+.short-input {
+    max-width: 500px;
+    margin: auto;
+}
+.option:hover {
+    background-color: #444;
+}
+
+.option.selected {
+    background-color: #8e44ad;
+}
+
+button#submit {
+    background-color: #8e44ad;
+    color: #fff;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+button#submit:hover {
+    background-color: #732d91;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="container form-container" id="nameContainer">
+        <form id="nameForm" class="short-input">
+            <h2 class="text-center text-white bg-primary p-2 mb-6">BENVENUTO AL NOSTRO QUIZ</h2>
+        
+            <div class="form-group">
+                <input type="text" class="form-control" id="playerNameInput" placeholder="Inserisci il tuo nome per iniziare">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="startQuiz">Inizia</button>
+        </form>
+    </div>
+
+    <div class="quiz-container" id="quiz" style="display: none;">
+        <div class="quiz-header">
+            <h2 id="question">Question Text</h2>
+            <div class="options">
+                <button class="option" id="a" onclick="selectAnswer('a')">Answer A</button>
+                <button class="option" id="b" onclick="selectAnswer('b')">Answer B</button>
+                <button class="option" id="c" onclick="selectAnswer('c')">Answer C</button>
+                <button class="option" id="d" onclick="selectAnswer('d')">Answer D</button>
+            </div>
+        </div>
+        <button id="submit">Submit</button>
+    </div>
+
+    <div id="leaderboard" class="container mt-5 leaderboard-container" style="display: none;">
+        <h2 class="text-center text-white bg-primary ">Leaderboard</h2>
+        <ul id="leaderboard-list" class="list-group">
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const playerName = document.getElementById('playerNameInput').value.trim();
+            if (playerName) {
+                document.getElementById('nameContainer').style.display = 'none'; 
+                document.getElementById('quiz').style.display = 'block';
+                loadQuiz(); 
+            }
+        });
+    </script>
+</body>
+</html>
